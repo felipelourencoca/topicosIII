@@ -1,0 +1,139 @@
+
+*Main> takeDrop 1 4 [1..10]
+[5]
+*Main> [ x | x <-[1..10], x > 2 ]
+[3,4,5,6,7,8,9,10]
+*Main> :t not
+not :: Bool -> Bool
+*Main>  
+ *  Histórico restaurado 
+
+
+
+PS C:\Users\flourenço\Desktop\haskell> ghci
+GHCi, version 8.10.7: https://www.haskell.org/ghc/  :? for help
+Prelude> (\ x -> x + 1) 
+
+<interactive>:1:1: error:
+    * No instance for (Show (Integer -> Integer))
+        arising from a use of `print'
+        (maybe you haven't applied a function to enough arguments?)
+    * In a stmt of an interactive GHCi command: print it
+Prelude> (\ x -> x + 1) 2
+3
+Prelude> ( \ xs -> reverse xs ) "FATEC"
+"CETAF"  
+Prelude> ( \ x xs ->  x ++  xs ) "F" "elipe"
+"Felipe"
+Prelude> ( \ x ->  even x ) 4               
+True
+Prelude> ( \ x ->  even x ) 4
+True
+Prelude> :t (.)
+(.) :: (b -> c) -> (a -> b) -> a -> c
+Prelude> :t (#)
+
+<interactive>:1:1: error: Variable not in scope: #
+Prelude> :t (#)
+
+<interactive>:1:1: error: Variable not in scope: #
+Prelude> :t ($)
+($) :: (a -> b) -> a -> b
+Prelude> :t (.)
+(.) :: (b -> c) -> (a -> b) -> a -> c
+Prelude> :e
+No files to edit.
+Prelude> :l main.hs 
+[1 of 1] Compiling Main             ( main.hs, interpreted )
+Ok, one module loaded.
+*Main> :l main4.hs 
+
+
+*Main> somar 2 2
+4
+*Main> aplicaFuncao somar 2 2
+4
+*Main> aplicaFuncao (\ x y -> x * y) 2 2
+4
+*Main> aplicaFuncao (\ x y -> x * y) 2 4
+8
+*Main> :r
+[1 of 1] Compiling Main             ( main4.hs, interpreted )
+Ok, one module loaded.
+*Main> aplicaFuncao (\ x y -> x * y) 2 4
+8
+*Main> :R
+unknown command ':R'
+use :? for help.
+*Main> :r
+[1 of 1] Compiling Main             ( main4.hs, interpreted )
+Ok, one module loaded.
+*Main> :t aplicaFuncao 
+aplicaFuncao :: Int -> (Int -> Int -> Int) -> Int -> Int
+*Main> aplicaFuncao 2 (\ x y -> x + y)
+
+<interactive>:12:1: error:
+    * No instance for (Show (Int -> Int)) arising from a use of `print'
+        (maybe you haven't applied a function to enough arguments?)
+    * In a stmt of an interactive GHCi command: print it
+*Main> aplicaFuncao 2 (\ x y -> x + y)  
+
+<interactive>:13:1: error:
+    * No instance for (Show (Int -> Int)) arising from a use of `print'
+        (maybe you haven't applied a function to enough arguments?)
+    * In a stmt of an interactive GHCi command: print it
+*Main> :t aplicaFuncao 2 (\ x y -> x + y)
+aplicaFuncao 2 (\ x y -> x + y) :: Int -> Int
+*Main> :r
+[1 of 1] Compiling Main             ( main4.hs, interpreted )
+Ok, one module loaded.
+*Main> aplicaFuncao' (\ x y -> x ++ y) "F" "E"
+"FE"
+*Main> aplicaFuncao' (\ x y -> x + y) 4 4     
+8
+*Main> aplicaFuncao' (\ x y -> x > y ) 4 4
+False
+*Main> :t somar
+somar :: Int -> Int -> Int
+*Main> let somar2 = somar 4
+*Main> let somar2 = somar 2
+*Main> :t somar2
+somar2 :: Int -> Int
+*Main> :t somar
+somar :: Int -> Int -> Int
+*Main> somar2 10           
+12
+*Main> :t (++)             
+(++) :: [a] -> [a] -> [a]
+*Main> let concatL = [1..10] ++
+
+<interactive>:26:25: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+*Main> let concatL = [1,2,3] ++
+
+<interactive>:27:25: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+*Main> :t (++)
+(++) :: [a] -> [a] -> [a]
+*Main> let concatL xs = [1,2,3] ++ xs
+*Main> :t concatL
+concatL :: Num a => [a] -> [a]
+*Main> :t (++)
+(++) :: [a] -> [a] -> [a]
+*Main> :T [1,2,3] ++                 
+unknown command ':T'
+use :? for help.    
+*Main> :t [1,2,3] ++ 
+
+<interactive>:1:11: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+*Main> :t ([1,2,3] ++ )
+([1,2,3] ++ ) :: Num a => [a] -> [a]
+*Main> :t (++)         
+(++) :: [a] -> [a] -> [a]
+*Main> :R
+unknown command ':R'
+use :? for help.
+*Main> :e
+Ok, one module loaded.
+*Main> 
